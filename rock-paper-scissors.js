@@ -2,8 +2,8 @@
 
 const getComputerChoice = function() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
-    let computerChoice = '';
 
+    let computerChoice = '';
     if (randomNumber === 1) {
         computerChoice = 'Rock';
     } else if (randomNumber === 2) {
@@ -18,8 +18,8 @@ const getComputerChoice = function() {
 const playRound = function(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-    let roundResult = '';
 
+    let roundResult = '';
     if (playerSelection === 'rock' && computerSelection === 'rock') {
         roundResult = 'Draw. Both are Rocks';
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
@@ -44,11 +44,10 @@ const playRound = function(playerSelection, computerSelection) {
 }
 
 const calcScore = function(playerSelection, computerSelection) {
-    let score = 0;
-
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     
+    let score = 0;
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
         score = 1;
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
@@ -67,9 +66,10 @@ const game = function() {
         const playerSelection = prompt('Rock Paper Scissors!\n(Choose from Rock/Paper/Scissors)','');
         const computerSelection = getComputerChoice();
 
+        roundMessage = playRound(playerSelection, computerSelection);
         totalScore += calcScore(playerSelection, computerSelection);
         
-        alert(playRound(playerSelection, computerSelection));
+        alert(roundMessage);
         alert('Score: ' + String(totalScore));
     }
 }
