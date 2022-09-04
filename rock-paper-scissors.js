@@ -43,6 +43,35 @@ const playRound = function(playerSelection, computerSelection) {
     return roundResult;
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+const calcScore = function(playerSelection, computerSelection) {
+    let score = 0;
+
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+    
+    if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        score = 1;
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        score = 1;
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        score = 1;
+    }
+
+    return score;
+}
+
+const game = function() {
+    let totalScore = 0;
+
+    for (let i = 1; i <= 5; i++) {
+        const playerSelection = prompt('Rock Paper Scissors!\n(Choose from Rock/Paper/Scissors)','');
+        const computerSelection = getComputerChoice();
+
+        totalScore += calcScore(playerSelection, computerSelection);
+        
+        alert(playRound(playerSelection, computerSelection));
+        alert('Score: ' + String(totalScore));
+    }
+}
+
+game();
